@@ -1,0 +1,148 @@
+{% extends 'nav.html' %}
+{% block content %}
+<style>
+.bg{
+    background-image: url(https://w.forfun.com/fetch/77/77f3aa05d41552a0d184ff756ae9fa34.jpeg);
+    background-size: cover;
+}
+.card{
+width: 400px;
+padding: 20px;
+border:none;
+}
+
+
+.form-control{
+text-indent: 14px;
+}
+
+
+
+.inputbox{
+
+margin-bottom: 10px;
+}
+
+
+
+.form-check-label{
+
+font-size: 13px;
+}
+
+.form-check-input {
+width: 14px;
+height: 15px;
+margin-top: 5px;
+
+}
+
+.forgot {
+font-size: 14px;
+text-decoration: none;
+color: red;
+font-display: bold;
+}
+.forgot :hover{
+    color: black;
+}
+
+.mail{
+color: black;
+text-decoration: none;
+}
+.mail a{
+    color: red;
+}
+
+
+.form-check{
+
+cursor: pointer;
+}
+
+.btn-primary {
+color: black;
+background-color: white;
+border-color: red;
+}
+</style>
+
+<div class="bg img-fluid">
+    <br>
+<center>
+    <div class="container">
+    <form class="container" action="{% url 'signupdb' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="container">
+            {% for message in messages %}
+            <h5>
+                <div class="alert alert-warning mt-2" style="width: 50%;">
+                    {{message}}
+                </div>
+            </h5>
+            {% endfor %}
+        </div>
+<div class="card mt-5 mb-5">
+    <div class="text-center mt-0">
+     <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/loginbanner.png" class="img-fluid" width="350">
+      </div>
+    <div class="mt-4 text-center form-group">
+        <h4 >Sign Up</h4>
+        <div class="mt-3 inputbox">
+            <input type="text" class="form-control" name="fname" placeholder="First Name">
+                
+        </div>
+        <div class="inputbox">
+            <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                
+        </div>
+        <div class="inputbox">
+            <input type="text" class="form-control" name="address" placeholder="Address">
+                
+        </div>
+        <div class="inputbox">
+         <input type="email" class="form-control" name="email" placeholder="Email">
+            
+        </div>
+        <div class="inputbox">
+            <input type="text" class="form-control" name="number" placeholder="Phone Number">
+               
+        </div>
+        <div class="inputbox">
+            <input type="text" class="form-control" name="username" placeholder="Username">
+                
+        </div>
+        <div class="inputbox">
+         <input type="password" class="form-control" name="password" placeholder="Password">
+         
+        </div>
+        <div class="inputbox">
+            <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password">
+           
+           </div>
+           <div class="inputbox">
+            <input type="file" class="form-control"  name="file" accept="image/*">
+            
+           </div>
+    </div>
+    <div class="mt-4">
+     <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </div>
+    <div class="mt-2">
+        <a href="{% url 'loginpage' %}" style="background-color: red;color: white;" class="btn btn-primary btn-block">Existing User? Login</a>
+       </div>
+    <div class="text-center intro mt-3 mb-3">
+      <p class="mail">By continuing, I agree to the <a href="https://www.bookswagon.com/termsofuse" target="_blank">Terms of Use</a>  & 
+        <a href="https://www.bookswagon.com/privacypolicy" target="_blank">Privacy Policy</a></p>    
+    </div>
+</div>
+</form>
+</div>
+</center>
+<br>
+<br><hr>
+</div>
+
+
+{% endblock %}

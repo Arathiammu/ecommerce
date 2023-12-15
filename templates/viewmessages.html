@@ -1,0 +1,61 @@
+{% extends 'adminnav.html' %}
+{% block content %}
+<style>
+        h1{
+        text-align: center;
+    }
+    table {
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                display: flex;
+                flex-direction: column;
+                border: 3px solid rgb(25, 24, 24);
+                padding: 1px;
+            }
+
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <ol class="breadcrumb m-3">
+            <li class="breadcrumb-item">
+              <a href="{% url 'viewcontact' %}">Contacts</a>
+            </li>
+            <li class="breadcrumb-item active">Messages</li>
+        </ol>
+    </div>
+<div class="container">
+    <h1 >Messages</h1> 
+    <table class="table table-light table-striped">
+        <thead class="table table-info">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for c in contact %}
+            <tr>
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.number}}</td>
+                <td>{{c.subject}}</td>
+                <td>{{c.message}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

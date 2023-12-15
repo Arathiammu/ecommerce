@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    hr.new1 {
+        border-top: 1px solid red;
+      }
+      #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 10px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+      </style>
+</head>
+<body class="img-fluid">
+    <nav class="navbar navbar-expand-md navbar-light">
+        <!-- Brand -->
+        <a class="navbar-brand" href="{% url 'userhome' %}"><img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png" alt="" class="img-fluid" style="height: 60px;"></a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
+          <ul class="navbar-nav" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <li class="nav-item">
+              <a class="nav-link  text-dark" href="{% url 'userhome' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+                     categories </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for c in category %}
+                    <a href="{% url 'userproduct' c.id %}" class="dropdown-item" value="{{c.id}}" >{{c.category}}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'requestbook' %}">Request a Book</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto" style="margin-right: 70px;">
+            <li class="nav-item dropdown">
+                <a class="nav-link text-dark dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'userhome' %}">
+                    <img src="{{users.image.url}}" class="rounded-circle" height="30" width="30" alt="userimage" loading="lazy"/> {{users.user.first_name}}</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item " href="{% url 'userhome' %}" style="text-align: center;">Your Account</a>
+                    <a class="dropdown-item " href="{% url 'edituser' %}" style="text-align: center;">Personal Settings</a>
+                    <a class="dropdown-item " href="{% url 'view_cart' %}" style="text-align: center;">Your Cart</a>
+                    <a class="dropdown-item btn btn-block" href="{% url 'admin_logout' %}" style="background-color: red;text-align: center;">Logout</a>
+                    
+                </div>
+            </li>&nbsp;
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <hr class="new1">
+      {% block content %}
+            {% endblock %}
+            <!--Footer-->
+    <div class="container-fluid ">
+        <footer class="text-center text-sm-start text-dark" style="background-color: #f8f9fa">
+            <section class="">
+                <div class="container text-center text-sm-start ">
+                  <div class="row  mt-5 pt-5">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
+                      <h6 class=" fw-bold" style="color: red;">Company</h6>
+                      <p>
+                        <a href="{% url 'about' %}" target="_blank" class="text-dark">About Us</a>
+                      </p>
+                      <p>
+                        <a href="" class="text-dark">Career</a>
+                      </p>
+                      <p>
+                        <a href="" class="text-dark">Blog</a>
+                      </p>
+                      <p>
+                        <a href="{% url 'contact' %}" target="_blank" class="text-dark">Contact Us</a>
+                      </p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
+                        <h6 class=" fw-bold" style="color: red;">Policies</h6>
+                        <p>
+                          <a href="" class="text-dark">Privacy Policies</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Terms of Use</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Secure Shopping</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Copyright Policy</a>
+                        </p>
+                      </div>
+
+                      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
+                        <h6 class=" fw-bold" style="color: red;">Help</h6>
+                        <p>
+                          <a href="" class="text-dark">Payment</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Shipping</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Return</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">FAQ</a>
+                        </p>
+                      </div>
+
+                      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
+                        <h6 class=" fw-bold" style="color: red;">Misc</h6>
+                        <p>
+                          <a href="" class="text-dark">Affiliate</a>
+                        </p>
+                        <p>
+                          <a href="" class="text-dark">Sitemap</a>
+                        </p>
+                      </div>
+
+                  </div>
+                </div>
+              </section>
+          <section class="d-flex justify-content-center ">
+            <div class="m-3">
+              <a href="" class=" me-4">
+                <i class="fa fa-facebook-f"></i>
+              </a>
+              <a href="" class=" me-4">
+                <i class="fa fa-twitter"></i>
+              </a> 
+              <a href="" class=" me-4">
+                <i class="fa fa-linkedin"></i>
+              </a> 
+              <a href="" class=" me-4">
+                <i class="fa fa-pinterest"></i>
+              </a> 
+              <a href="" class=" me-4">
+                <i class="fa fa-instagram"></i>
+              </a>
+              <a href="" class=" me-4">
+                <i class="fa fa-youtube"></i>
+              </a>      
+            </div>
+          </section>
+    
+            <div class="text-center mb-0" >
+               Copyright © 2023 . Bookswagon.com. All Rights Reserved
+            </div>
+        </footer>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-chevron-up"></i></button>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    </script>
+</body>
+</html>

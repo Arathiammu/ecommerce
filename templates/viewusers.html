@@ -1,0 +1,65 @@
+{% extends 'adminnav.html' %}
+{% block content %}
+<style>
+        h1{
+        text-align: center;
+    }
+    table {
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                display: flex;
+                flex-direction: column;
+                border: 3px solid rgb(25, 24, 24);
+                padding: 1px;
+            }
+
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <ol class="breadcrumb m-3">
+            <li class="breadcrumb-item">
+              <a href="{% url 'show_user' %}">Users</a>
+            </li>
+            <li class="breadcrumb-item active">View Users</li>
+        </ol>
+    </div>
+<div class="container">
+    <h1 >User Details</h1> 
+    <table class="table table-dark table-striped">
+        <thead >
+          <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for s in user %}
+            <tr>
+                <td>{{s.user.first_name}} {{s.user.last_name}}</td>
+                <td>{{s.user.username}}</td>
+                <td>{{s.user.email}}</td>
+                <td>{{s.address}}</td>
+                <td>{{s.number}}</td>
+                <td><img src="{{s.image.url}}" class="img-fluid" style="height: 80px;width: 90px;" alt=""></td>
+                <td><a href="{% url 'delete' s.id %}"><i class="fa fa-trash"></i> Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

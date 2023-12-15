@@ -1,0 +1,55 @@
+{% extends 'nav.html' %}
+{% block content %}
+<style>
+    @media (max-width: 767.98px) { .border-sm-start-none { border-left: none !important; } }
+
+
+</style>
+<section style="background-color: #bbd3eb73;">
+    <div class="container py-5">
+        <div class="row justify-content-center ">
+            <div class="col-md-12 col-xl-10">
+                       <p> <a href="{% url 'home' %}">Home</a>>{{cat.category}}</p>
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        {% for p in product %}
+                        <div class="row">
+                            <div class="col-sm-3 ml-5 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <center>
+                                    <img src="{{p.image.url}}" class="w-80" style="height: 180px;"  />
+                                </center>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mt-5">
+                                
+                                <h5>{{p.product}}</h5>
+                  
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>By: {{p.author}}</span>
+                                </div>
+                  
+                            </div>
+                            <div class="col-sm-4 ml-4 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 mt-2">&#8377;{{p.price}}</h4>
+                                </div>
+                                    <h6 class="text-success">Available</h6>
+                                    <p class="text-truncate mb-4 mb-md-0">
+                                        &#8377;39 shipping in India per item and <br> low cost Worldwide
+                                      </p>
+                                <div class="d-flex flex-column mt-4">
+                                    <a href="{% url 'addcart' p.id %}" class="btn btn-outline-primary btn-sm mt-2">
+                                        Add to Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div> <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'nav.html' %}
+{% block content %}
+<style>
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3145;
+}
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    outline: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.section_all {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+.section-title {
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    letter-spacing: 0.4px;
+    line-height: 28px;
+    max-width: 550px;
+}
+
+.section-title-border {
+    background-color: #000;
+    height: 1 3px;
+    width: 44px;
+}
+
+.section-title-border-white {
+    background-color: #fff;
+    height: 2px;
+    width: 100px;
+}
+.text_custom {
+    color: #00bd2a;
+}
+
+.about_icon i {
+    font-size: 22px;
+    height: 65px;
+    width: 65px;
+    line-height: 65px;
+    display: inline-block;
+    background: #fff;
+    border-radius: 35px;
+    color: #00bd2a;
+    box-shadow: 0 8px 20px -2px rgba(158, 152, 153, 0.5);
+}
+
+.about_header_main .about_heading {
+    max-width: 450px;
+    font-size: 24px;
+}
+
+.about_icon span {
+    position: relative;
+    top: -10px;
+}
+
+.about_content_box_all {
+    padding: 28px;
+}
+
+</style>
+<section class="section_all bg-light" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section_title_all text-center">
+                    <h3 class="font-weight-bold">About <span class="text-custom">Bookswagon</span></h3>
+                    <p class="section_subtitle mx-auto text-muted">Bookswagon is India's Largest and Cheapest Online Bookstore offering 40+ Million selections. <br/>
+                        "I declare after all there is no enjoyment like reading!"<br>
+                        - Jane Austen, Pride and Prejudice.</p>
+                    <div class="">
+                        <i class=""></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row vertical_content_manage mt-5">
+            <div class="col-lg-6">
+                <div class="about_header_main mt-3">
+                    <h4 class="about_heading text-capitalize font-weight-bold mt-4">Dear readers,</h4>
+                    <p class="text-muted mt-3">We offer a huge collection of books from diverse categories of Fiction, Non-fiction, Biographies, History, Religion, Self-Help, etc. We also offer a collection of Investments and Management, Computers, Engineering, Medical, College and School text reference books.</p>
+
+                    <p class="text-muted mt-3">We strive for customer satisfaction by offering a user-friendly search engine, efficient payment options and seamless delivery systems. Apart from all this, we also provide great deals and discounts on our products.</p>
+                    <p class="text-muted mt-3">All the Publishers, Distributors and Authors around the country are welcome to partner with us and grow the Bookswagon family. We would like to thank our customers for shopping with us. You can write to us on our e-mail id to share any suggestions or feedback you might have regarding our website or services.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="img_about mt-5">
+                    <img src="https://i.ytimg.com/vi/gIIgr1HzaS4/maxresdefault.jpg" alt="" class="img-fluid mx-auto d-block">
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</section>
+{% endblock %}

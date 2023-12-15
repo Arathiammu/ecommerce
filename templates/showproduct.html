@@ -1,0 +1,63 @@
+{% extends 'adminnav.html' %}
+{% block content %}
+<style>
+    h1{
+        text-align: center;
+    }
+    table {
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                display: flex;
+                flex-direction: column;
+                border: 3px solid rgb(25, 24, 24);
+                padding: 1px;
+            }
+
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <ol class="breadcrumb m-3">
+            <li class="breadcrumb-item">
+              <a href="{% url 'addproduct' %}">Product</a>
+            </li>
+            <li class="breadcrumb-item active">View Producty</li>
+        </ol>
+    </div>
+    <div class="container">
+        <h1 >Product Details</h1> 
+        <table class="table table-light">
+            <thead class="table table-dark">
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Author</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr>
+                    <td>{{p.product}}</td>
+                    <td>{{p.author}}</td>
+                    <td>{{p.category.category}}</td>
+                    <td>&#8377;{{p.price}}</td>
+                    <td><img src="{{p.image.url}}" class="img-fluid" style="height: 120px;width: 90px;" alt=""></td>
+                    <td><a href="{% url 'deletepage' p.id %}"><i class="fa fa-trash"></i> Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

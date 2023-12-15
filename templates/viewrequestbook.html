@@ -1,0 +1,63 @@
+{% extends 'adminnav.html' %}
+{% block content %}
+<style>
+        h1{
+        text-align: center;
+    }
+    table {
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+
+            table thead {
+                display: none;
+            }
+
+            table tr {
+                display: flex;
+                flex-direction: column;
+                border: 3px solid rgb(25, 24, 24);
+                padding: 1px;
+            }
+
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <ol class="breadcrumb m-3">
+            <li class="breadcrumb-item">
+              <a href="{% url 'viewrequestbook' %}">Books</a>
+            </li>
+            <li class="breadcrumb-item active">Request</li>
+        </ol>
+    </div>
+<div class="container">
+    <h1 >Book Request</h1> 
+    <table class="table table-light ">
+        <thead class="table table-primary">
+          <tr>
+            <th scope="col">Isbn</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for b in book %}
+            <tr>
+                <td>{{b.isbn}}</td>
+                <td>{{b.title}}</td>
+                <td>{{b.author}}</td>
+                <td>{{b.quantity}}</td>
+                <td>{{b.email}}</td>
+                <td>{{b.number}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
